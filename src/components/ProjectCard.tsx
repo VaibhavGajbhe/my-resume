@@ -1,27 +1,12 @@
 import React from 'react';
 import { ProjectItem } from '../types/portfolio';
-import { Github, CheckCircle2, Layers, ArrowUpRight, Globe } from 'lucide-react';
+import { CheckCircle2, Layers, ArrowUpRight, Globe } from 'lucide-react';
 
 interface ProjectCardProps {
   project: ProjectItem;
-  onOpenPlaceholderModal: (title: string, linkType: 'github' | 'demo') => void;
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenPlaceholderModal }) => {
-  const handleGithubClick = (e: React.MouseEvent) => {
-    if (!project.githubUrl || project.githubUrl.includes('YOUR_USERNAME')) {
-      e.preventDefault();
-      onOpenPlaceholderModal(project.title, 'github');
-    }
-  };
-
-  const handleDemoClick = (e: React.MouseEvent) => {
-    if (!project.liveDemoUrl || project.liveDemoUrl.includes('YOUR_URL')) {
-      e.preventDefault();
-      onOpenPlaceholderModal(project.title, 'demo');
-    }
-  };
-
+export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <div className="glass-panel glass-panel-hover rounded-2xl border border-cyan-500/25 p-6 md:p-8 flex flex-col justify-between space-y-6 relative overflow-hidden bg-slate-950/80 shadow-2xl">
       
@@ -45,7 +30,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenPlaceho
             {project.liveDemoUrl && (
               <span className="inline-flex items-center space-x-1 text-[11px] font-mono px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-500/30 font-semibold">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Live Site</span>
+                <span>Live App</span>
               </span>
             )}
             <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-slate-900 text-slate-300 border border-slate-800">
@@ -97,7 +82,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenPlaceho
         </div>
       </div>
 
-      {/* Footer: Tech Stack & Action Links */}
+      {/* Footer: Tech Stack & Action Button (if live demo exists) */}
       <div className="pt-4 border-t border-slate-800/80 space-y-4">
         {/* Technologies Pills */}
         <div className="flex flex-wrap gap-1.5">
@@ -111,34 +96,21 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenPlaceho
           ))}
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-wrap items-center gap-3 pt-2">
-          {project.liveDemoUrl && (
+        {/* Live Website Action Button (only if live demo URL exists) */}
+        {project.liveDemoUrl && (
+          <div className="pt-1">
             <a
               href={project.liveDemoUrl}
-              onClick={handleDemoClick}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-mono font-bold text-xs py-3 px-5 rounded-xl shadow-lg shadow-cyan-500/20 transition-all hover:scale-105"
+              className="w-full inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-mono font-bold text-xs py-3 px-5 rounded-xl shadow-lg shadow-cyan-500/20 transition-all hover:scale-[1.02]"
             >
               <Globe className="w-4 h-4" />
               <span>Visit Live Website (www.makewithmojo.com)</span>
               <ArrowUpRight className="w-4 h-4" />
             </a>
-          )}
-
-          <a
-            href={project.githubUrl || '#'}
-            onClick={handleGithubClick}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white font-mono text-xs py-3 px-5 rounded-xl border border-slate-700 transition-all group"
-          >
-            <Github className="w-4 h-4" />
-            <span>Repository Code</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan-400 transition-colors" />
-          </a>
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
