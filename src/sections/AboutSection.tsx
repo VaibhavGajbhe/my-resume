@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Shield, Code2, Cloud, Cpu, Workflow, Globe, Server } from 'lucide-react';
+import { Shield, Code2, Cloud, Cpu, Workflow, Globe, Server, CheckCircle2 } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   const compactCapabilities = [
@@ -13,7 +13,7 @@ export const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-16 md:py-20 relative bg-slate-950/60 border-t border-b border-slate-800/80">
+    <section id="about" className="py-16 md:py-20 relative bg-slate-950/70 border-t border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Section Header */}
@@ -31,16 +31,19 @@ export const AboutSection: React.FC = () => {
         </div>
 
         {/* Small Compact Grid Boxes */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
           {compactCapabilities.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="glass-panel glass-panel-hover p-3.5 rounded-xl border border-slate-800 space-y-2 bg-slate-900/50 flex flex-col justify-between"
+                className="glass-panel glass-panel-hover p-4 rounded-xl border border-slate-800 space-y-2.5 bg-slate-900/60 flex flex-col justify-between"
               >
-                <div className="p-2 w-fit rounded-lg bg-cyan-950 border border-cyan-500/30 text-cyan-400">
-                  <Icon className="w-4 h-4" />
+                <div className="flex items-center justify-between">
+                  <div className="p-2 w-fit rounded-lg bg-cyan-950 border border-cyan-500/40 text-cyan-400">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-cyan-500/60" />
                 </div>
                 <div>
                   <h3 className="text-xs font-bold text-white leading-tight">{item.title}</h3>

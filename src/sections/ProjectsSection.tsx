@@ -30,13 +30,13 @@ export const ProjectsSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
             <Rocket className="w-3.5 h-3.5" />
-            <span>Infrastructure Engineering</span>
+            <span>Featured Systems & Full-Stack Applications</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-            Featured Projects & Cloud Implementations
+            Featured Projects & Applications
           </h2>
           <p className="text-base text-slate-300 leading-relaxed font-sans">
-            Real-world cloud infrastructure automation, AKS microservice platforms, DevSecOps pipelines, and AI cloud architecture implementations.
+            Production full-stack platforms including MakeWithMojo E-Commerce, MockMate AI Interview Platform, ExamApp Question Bank, and Hiriyo App Local Business Hiring.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export const ProjectsSection: React.FC = () => {
             </div>
 
             <p className="text-xs text-slate-300 leading-relaxed">
-              This link is currently configured with a placeholder URL (`YOUR_USERNAME`). You can update the repository URL in <code>src/data/portfolioData.ts</code>.
+              This link is configured with a repository placeholder. You can update your custom GitHub URL anytime in <code>src/data/portfolioData.ts</code>.
             </p>
 
             <div className="pt-2 flex justify-end">

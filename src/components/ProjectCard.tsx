@@ -23,47 +23,74 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenPlaceho
   };
 
   return (
-    <div className="glass-panel glass-panel-hover rounded-2xl border border-cyan-500/20 p-6 md:p-8 flex flex-col justify-between space-y-6 relative overflow-hidden bg-slate-950/70">
+    <div className="glass-panel glass-panel-hover rounded-2xl border border-cyan-500/25 p-6 md:p-8 flex flex-col justify-between space-y-6 relative overflow-hidden bg-slate-950/80 shadow-2xl">
       
-      {/* Background Accent */}
-      <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+      {/* Background Accent glow */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="space-y-4">
         
         {/* Header Badges */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center space-x-2">
-            <span className="p-2 rounded-lg bg-cyan-950/80 border border-cyan-500/30 text-cyan-400">
+            <span className="p-2 rounded-xl bg-cyan-950 border border-cyan-500/40 text-cyan-400">
               <Layers className="w-4 h-4" />
             </span>
-            <span className="text-xs font-mono text-cyan-400 font-semibold uppercase tracking-wider">
+            <span className="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">
               {project.subtitle}
             </span>
           </div>
 
-          <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-slate-900 text-slate-300 border border-slate-800">
-            Featured System
-          </span>
+          <div className="flex items-center space-x-2">
+            {project.liveDemoUrl && (
+              <span className="inline-flex items-center space-x-1 text-[11px] font-mono px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-500/30 font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Live Site</span>
+              </span>
+            )}
+            <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-slate-900 text-slate-300 border border-slate-800">
+              Production System
+            </span>
+          </div>
         </div>
 
         {/* Title & Description */}
-        <div>
-          <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+        <div className="space-y-1.5">
+          <h3 className="text-xl md:text-2xl font-extrabold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-2">
             {project.title}
           </h3>
-          <p className="text-sm text-slate-300 leading-relaxed mt-2">
+          <p className="text-sm text-slate-300 leading-relaxed font-sans">
             {project.description}
           </p>
         </div>
 
+        {/* Live URL Banner for MakeWithMojo */}
+        {project.liveDemoUrl && (
+          <div className="p-3.5 bg-slate-900/90 rounded-xl border border-cyan-500/30 font-mono text-xs text-slate-300 flex items-center justify-between">
+            <div className="flex items-center space-x-2 text-cyan-400">
+              <Globe className="w-4 h-4 shrink-0 text-cyan-400" />
+              <span className="text-white font-bold">{project.liveDemoUrl}</span>
+            </div>
+            <a
+              href={project.liveDemoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-mono text-cyan-400 hover:text-white flex items-center space-x-1"
+            >
+              <span>Visit</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        )}
+
         {/* Highlights Bullet Grid */}
         <div>
-          <h4 className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Key Engineering Features</h4>
+          <h4 className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2.5">Key Technical Highlights</h4>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs font-sans text-slate-300">
             {project.highlights.map((highlight, idx) => (
-              <li key={idx} className="flex items-start space-x-2 bg-slate-900/40 p-2.5 rounded-lg border border-slate-800/60">
+              <li key={idx} className="flex items-start space-x-2 bg-slate-900/50 p-3 rounded-xl border border-slate-800/80">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                <span className="leading-tight">{highlight}</span>
+                <span className="leading-relaxed">{highlight}</span>
               </li>
             ))}
           </ul>
@@ -77,7 +104,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenPlaceho
           {project.technologies.map((tech, idx) => (
             <span
               key={idx}
-              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-slate-900/90 text-cyan-300 border border-slate-800"
+              className="text-[11px] font-mono px-3 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-800"
             >
               {tech}
             </span>
@@ -92,11 +119,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenPlaceho
               onClick={handleDemoClick}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-mono font-bold text-xs py-2.5 px-4 rounded-xl shadow-lg shadow-cyan-500/20 transition-all"
+              className="flex-1 inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-mono font-bold text-xs py-3 px-5 rounded-xl shadow-lg shadow-cyan-500/20 transition-all hover:scale-105"
             >
               <Globe className="w-4 h-4" />
-              <span>Visit Live App</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <span>Visit Live Website (www.makewithmojo.com)</span>
+              <ArrowUpRight className="w-4 h-4" />
             </a>
           )}
 
@@ -105,11 +132,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenPlaceho
             onClick={handleGithubClick}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center space-x-2 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white font-mono text-xs py-2.5 px-4 rounded-xl border border-slate-700 transition-all group"
+            className="flex-1 inline-flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white font-mono text-xs py-3 px-5 rounded-xl border border-slate-700 transition-all group"
           >
             <Github className="w-4 h-4" />
-            <span>Repository</span>
-            <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover:text-cyan-400 transition-colors" />
+            <span>Repository Code</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan-400 transition-colors" />
           </a>
         </div>
       </div>
