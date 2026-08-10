@@ -14,7 +14,7 @@ export const personalInfo: PersonalInfo = {
   company: "Tata Consultancy Services (TCS)",
   bioPositioning: "Senior DevOps & Full Stack Engineer with 7+ years of experience specializing in cloud infrastructure, Terraform IaC, Kubernetes, Python, React, JavaScript/TypeScript, and high-performance web applications.",
   aboutText: "I am a Senior DevOps & Full Stack Engineer with 7+ years of experience building scalable web applications and automated cloud infrastructure. My expertise spans Python backend microservices, React frontends, JavaScript/TypeScript, WordPress, Azure cloud, Kubernetes, and CI/CD pipelines.",
-  email: "YOUR_EMAIL",
+  email: "vgajbhe22@gmail.com",
   githubUrl: "https://github.com/YOUR_USERNAME",
   linkedinUrl: "https://www.linkedin.com/in/vaibhav-gajbhe-bb650915b/",
   resumePath: "./assets/resume.pdf"
